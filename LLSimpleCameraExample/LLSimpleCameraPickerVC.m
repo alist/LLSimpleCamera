@@ -132,12 +132,13 @@
     [self.closeButton addTarget:self action:@selector(closeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.closeButton];
 
-    self.albumsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.albumsButton.frame = CGRectMake(0, 0, 35,35);
-    [self.albumsButton setImage:[UIImage imageNamed:@"camera-gallery"] forState:UIControlStateNormal];
-    [self.albumsButton addTarget:self action:@selector(albumsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.albumsButton];
-
+    if (self.showAlbumsButton){
+        self.albumsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.albumsButton.frame = CGRectMake(0, 0, 35,35);
+        [self.albumsButton setImage:[UIImage imageNamed:@"camera-gallery"] forState:UIControlStateNormal];
+        [self.albumsButton addTarget:self action:@selector(albumsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.albumsButton];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
