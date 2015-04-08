@@ -134,7 +134,8 @@
 
     if (self.showAlbumsButton){
         self.albumsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.albumsButton.frame = CGRectMake(0, 0, 35,35);
+        self.albumsButton.imageEdgeInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+        self.albumsButton.frame = CGRectMake(0, 0, 35+self.albumsButton.imageEdgeInsets.left+self.albumsButton.imageEdgeInsets.right,35+self.albumsButton.imageEdgeInsets.top+self.albumsButton.imageEdgeInsets.bottom);
         [self.albumsButton setImage:[UIImage imageNamed:@"camera-gallery"] forState:UIControlStateNormal];
         [self.albumsButton addTarget:self action:@selector(albumsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.albumsButton];
