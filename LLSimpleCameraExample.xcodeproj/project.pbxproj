@@ -23,7 +23,7 @@
 		17E4C4AB1A01235200E61ACD /* LLSimpleCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E4C4AA1A01235200E61ACD /* LLSimpleCamera.m */; };
 		17E4C4B31A0123C100E61ACD /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E4C4AE1A0123C100E61ACD /* UIImage+Crop.m */; };
 		17E4C4B51A0123C100E61ACD /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E4C4B21A0123C100E61ACD /* UIImage+Resize.m */; };
-		17E4C4B91A01285800E61ACD /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E4C4B81A01285800E61ACD /* HomeViewController.m */; };
+		17E4C4B91A01285800E61ACD /* LLSimpleCameraPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E4C4B81A01285800E61ACD /* LLSimpleCameraPickerVC.m */; };
 		17E4C4BC1A0128EC00E61ACD /* ViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E4C4BB1A0128EC00E61ACD /* ViewUtils.m */; };
 /* End PBXBuildFile section */
 
@@ -64,8 +64,8 @@
 		17E4C4AE1A0123C100E61ACD /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
 		17E4C4B11A0123C100E61ACD /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		17E4C4B21A0123C100E61ACD /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
-		17E4C4B71A01285800E61ACD /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		17E4C4B81A01285800E61ACD /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		17E4C4B71A01285800E61ACD /* LLSimpleCameraPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSimpleCameraPickerVC.h; sourceTree = "<group>"; };
+		17E4C4B81A01285800E61ACD /* LLSimpleCameraPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSimpleCameraPickerVC.m; sourceTree = "<group>"; };
 		17E4C4BA1A0128EC00E61ACD /* ViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewUtils.h; sourceTree = "<group>"; };
 		17E4C4BB1A0128EC00E61ACD /* ViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,8 +188,8 @@
 		17E4C4B61A0123E400E61ACD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				17E4C4B71A01285800E61ACD /* HomeViewController.h */,
-				17E4C4B81A01285800E61ACD /* HomeViewController.m */,
+				17E4C4B71A01285800E61ACD /* LLSimpleCameraPickerVC.h */,
+				17E4C4B81A01285800E61ACD /* LLSimpleCameraPickerVC.m */,
 				17BD92321A1776E20016070B /* ImageViewController.h */,
 				17BD92331A1776E20016070B /* ImageViewController.m */,
 			);
@@ -308,7 +308,7 @@
 				17E4C4BC1A0128EC00E61ACD /* ViewUtils.m in Sources */,
 				17E4C4881A0122A700E61ACD /* AppDelegate.m in Sources */,
 				17E4C4851A0122A700E61ACD /* main.m in Sources */,
-				17E4C4B91A01285800E61ACD /* HomeViewController.m in Sources */,
+				17E4C4B91A01285800E61ACD /* LLSimpleCameraPickerVC.m in Sources */,
 				17E4C4B51A0123C100E61ACD /* UIImage+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

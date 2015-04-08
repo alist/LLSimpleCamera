@@ -394,7 +394,7 @@ NSString *const LLSimpleCameraErrorDomain = @"LLSimpleCameraErrorDomain";
 
 - (void)setCameraPosition:(CameraPosition)cameraPosition
 {
-    if(_position == cameraPosition || !self.session) {
+    if(_position == cameraPosition || !self.session || [self.session.inputs count] == 0) {
         return;
     }
     

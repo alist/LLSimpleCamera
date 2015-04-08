@@ -6,19 +6,28 @@
 //  Copyright (c) 2014 Ömer Faruk Gül. All rights reserved.
 //
 
-#import "HomeViewController.h"
+#import "LLSimpleCameraPickerVC.h"
 #import "ViewUtils.h"
 #import "ImageViewController.h"
+#import "ViewUtils.h"
 
-@interface HomeViewController ()
-@property (strong, nonatomic) LLSimpleCamera *camera;
+@interface LLSimpleCameraPickerVC ()
 @property (strong, nonatomic) UILabel *errorLabel;
 @property (strong, nonatomic) UIButton *snapButton;
 @property (strong, nonatomic) UIButton *switchButton;
+@property (strong, nonatomic) UIButton *closeButton;
+@property (strong, nonatomic) UIButton *albumsButton;
 @property (strong, nonatomic) UIButton *flashButton;
 @end
 
-@implementation HomeViewController
+@implementation LLSimpleCameraPickerVC
+
+-(LLSimpleCamera*)camera{
+    if (_camera == nil){
+        _camera = [[LLSimpleCamera alloc] initWithQuality:CameraQualityPhoto andPosition:CameraPositionBack];
+    }
+    return _camera;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,20 +40,19 @@
     // ----- initialize camera -------- //
     
     // create camera vc
-    self.camera = [[LLSimpleCamera alloc] initWithQuality:CameraQualityPhoto andPosition:CameraPositionBack];
     
     // attach to a view controller
     [self.camera attachToViewController:self withFrame:CGRectMake(0, 0, screenRect.size.width, screenRect.size.height)];
     
     // read: http://stackoverflow.com/questions/5427656/ios-uiimagepickercontroller-result-image-orientation-after-upload
     // you probably will want to set this to YES, if you are going view the image outside iOS.
-    self.camera.fixOrientationAfterCapture = NO;
+    self.camera.fixOrientationAfterCapture = YES;
     
     // take the required actions on a device change
     __weak typeof(self) weakSelf = self;
     [self.camera setOnDeviceChange:^(LLSimpleCamera *camera, AVCaptureDevice * device) {
         
-        NSLog(@"Device changed.");
+        HTLog(@"Device changed. %@",device);
         
         // device changed, check if flash is available
         if([camera isFlashAvailable]) {
@@ -63,7 +71,7 @@
     }];
     
     [self.camera setOnError:^(LLSimpleCamera *camera, NSError *error) {
-        NSLog(@"Camera error: %@", error);
+        HTLog(@"Camera error: %@", error);
         
         if([error.domain isEqualToString:LLSimpleCameraErrorDomain]) {
             if(error.code == LLSimpleCameraErrorCodePermission) {
@@ -75,7 +83,7 @@
                 label.numberOfLines = 2;
                 label.lineBreakMode = NSLineBreakByWordWrapping;
                 label.backgroundColor = [UIColor clearColor];
-                label.font = [UIFont fontWithName:@"AvenirNext-DemiBold" size:13.0f];
+                label.font = [UIFont systemFontOfSize:13.0f];
                 label.textColor = [UIColor whiteColor];
                 label.textAlignment = NSTextAlignmentCenter;
                 [label sizeToFit];
@@ -117,6 +125,19 @@
     self.switchButton.imageEdgeInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
     [self.switchButton addTarget:self action:@selector(switchButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.switchButton];
+    
+    self.closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.closeButton.frame = CGRectMake(0, 0, 40,40);
+    [self.closeButton setImage:[UIImage imageNamed:@"camera-close.png"] forState:UIControlStateNormal];
+    [self.closeButton addTarget:self action:@selector(closeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.closeButton];
+
+    self.albumsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.albumsButton.frame = CGRectMake(0, 0, 35,35);
+    [self.albumsButton setImage:[UIImage imageNamed:@"camera-gallery"] forState:UIControlStateNormal];
+    [self.albumsButton addTarget:self action:@selector(albumsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.albumsButton];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -139,6 +160,14 @@
     [self.camera togglePosition];
 }
 
+- (void)closeButtonPressed:(UIButton*)button{
+    [self.delegate imagePickerControllerDidCancel:self];
+}
+
+- (void)albumsButtonPressed:(UIButton*)button{
+    [self.delegate imagePickerControllerAlbumsPressed:self];
+}
+
 - (void)flashButtonPressed:(UIButton *)button {
     
     if(self.camera.flash == CameraFlashOff) {
@@ -158,6 +187,7 @@
 - (void)snapButtonPressed:(UIButton *)button {
     
     // capture
+    __weak LLSimpleCameraPickerVC * wSelf = self;
     [self.camera capture:^(LLSimpleCamera *camera, UIImage *image, NSDictionary *metadata, NSError *error) {
         if(!error) {
             
@@ -166,8 +196,7 @@
             [camera stop];
             
             // show the image
-            ImageViewController *imageVC = [[ImageViewController alloc] initWithImage:image];
-            [self presentViewController:imageVC animated:NO completion:nil];
+            [wSelf.delegate imagePickerController:wSelf didFinishPickingMediaWithInfo:@{UIImagePickerControllerOriginalImage: image}];
         }
         else {
             NSLog(@"An error has occured: %@", error);
@@ -189,6 +218,11 @@
     
     self.switchButton.top = 5.0f;
     self.switchButton.right = self.view.width - 5.0f;
+    
+    self.closeButton.center = self.switchButton.center;
+    self.closeButton.left = 5.0f;
+
+    self.albumsButton.center = (CGPoint){ceil(self.snapButton.center.x/2), self.snapButton.center.y};
 }
 
 - (BOOL)prefersStatusBarHidden {
