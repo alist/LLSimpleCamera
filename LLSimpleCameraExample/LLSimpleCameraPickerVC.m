@@ -52,7 +52,7 @@
     __weak typeof(self) weakSelf = self;
     [self.camera setOnDeviceChange:^(LLSimpleCamera *camera, AVCaptureDevice * device) {
         
-        HTLog(@"Device changed. %@",device);
+        //HTLog(@"Device changed. %@",device);
         
         // device changed, check if flash is available
         if([camera isFlashAvailable]) {
