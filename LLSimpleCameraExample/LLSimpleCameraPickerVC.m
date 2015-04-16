@@ -10,6 +10,7 @@
 #import "ViewUtils.h"
 #import "ImageViewController.h"
 #import "ViewUtils.h"
+#import "HTImageMirrorBehavior.h"
 
 @interface LLSimpleCameraPickerVC ()
 @property (strong, nonatomic) UILabel *errorLabel;
@@ -18,6 +19,7 @@
 @property (strong, nonatomic) UIButton *closeButton;
 @property (strong, nonatomic) UIButton *albumsButton;
 @property (strong, nonatomic) UIButton *flashButton;
+@property (strong, nonatomic) HTImageMirrorBehavior * imageMirrorBehavior;
 @end
 
 @implementation LLSimpleCameraPickerVC
@@ -27,6 +29,15 @@
         _camera = [[LLSimpleCamera alloc] initWithQuality:CameraQualityPhoto andPosition:CameraPositionBack];
     }
     return _camera;
+}
+
+-(HTImageMirrorBehavior*)imageMirrorBehavior{
+    if (_imageMirrorBehavior == nil){
+        _imageMirrorBehavior = [[HTImageMirrorBehavior alloc] init];
+        _imageMirrorBehavior.mirrorHorrizontal  = true;
+        _imageMirrorBehavior.activateWhenReady  = true;
+    }
+    return _imageMirrorBehavior;
 }
 
 - (void)viewDidLoad {
@@ -197,8 +208,14 @@
             // this very important, otherwise you may experience memory crashes
             [camera stop];
             
+            UIImage * outputImage = image;
+            if (wSelf.frontCameraYieldsMirrorImage && camera.position == CameraPositionFront){
+                [self.imageMirrorBehavior setImage:image];
+                outputImage = self.imageMirrorBehavior.outputImage;
+            }
+            
             // show the image
-            [wSelf.delegate imagePickerController:wSelf didFinishPickingMediaWithInfo:@{UIImagePickerControllerOriginalImage: image}];
+            [wSelf.delegate imagePickerController:wSelf didFinishPickingMediaWithInfo:@{UIImagePickerControllerOriginalImage: outputImage}];
         }
         else {
             NSLog(@"An error has occured: %@", error);

@@ -26,5 +26,6 @@
 @property (nonatomic, weak) id<LLSimpleCameraPickerVCDelegate> delegate;
 
 @property (nonatomic, assign) BOOL showAlbumsButton;
+@property (nonatomic, assign) BOOL frontCameraYieldsMirrorImage;
 
 @end
