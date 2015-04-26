@@ -8,7 +8,6 @@
 
 #import "LLSimpleCameraPickerVC.h"
 #import "ViewUtils.h"
-#import "ImageViewController.h"
 #import "ViewUtils.h"
 #import "HTImageMirrorBehavior.h"
 
