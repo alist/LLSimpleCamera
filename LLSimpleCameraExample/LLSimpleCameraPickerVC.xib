@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LLSimpleCameraPickerVC">
@@ -51,7 +50,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRU-Ld-hbS" userLabel="Close">
-                    <rect key="frame" x="4" y="13" width="40" height="40"/>
+                    <rect key="frame" x="4" y="5" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="Hxm-0d-o2f"/>
                         <constraint firstAttribute="width" secondItem="VRU-Ld-hbS" secondAttribute="height" multiplier="1:1" id="kwB-xL-EFQ"/>
@@ -64,7 +63,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chk-hS-XbR" userLabel="Switch">
-                    <rect key="frame" x="552" y="13" width="40" height="40"/>
+                    <rect key="frame" x="552" y="5" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Chk-hS-XbR" secondAttribute="height" multiplier="1:1" id="6Vd-jb-DzF"/>
                         <constraint firstAttribute="width" constant="40" id="Pz3-ax-SEq"/>
@@ -77,7 +76,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1u-ma-0uW" userLabel="Flash">
-                    <rect key="frame" x="280" y="13" width="40" height="40"/>
+                    <rect key="frame" x="280" y="5" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Z1u-ma-0uW" secondAttribute="height" multiplier="1:1" id="23E-Fz-vGE"/>
                         <constraint firstAttribute="width" constant="40" id="g2c-ta-tj3"/>
@@ -130,7 +129,7 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="1nC-Ye-5kO" secondAttribute="bottom" constant="15" id="7H6-hX-a7c"/>
                 <constraint firstItem="VRU-Ld-hbS" firstAttribute="leading" secondItem="193-ik-d8M" secondAttribute="leading" constant="4" id="Cf6-i9-CVZ"/>
-                <constraint firstItem="Chk-hS-XbR" firstAttribute="top" secondItem="193-ik-d8M" secondAttribute="topMargin" constant="5" id="EtO-7W-10K"/>
+                <constraint firstItem="Chk-hS-XbR" firstAttribute="top" secondItem="193-ik-d8M" secondAttribute="top" constant="5" id="EtO-7W-10K"/>
                 <constraint firstAttribute="trailing" secondItem="Chk-hS-XbR" secondAttribute="trailing" constant="8" id="FBt-Qd-s7w"/>
                 <constraint firstAttribute="centerX" secondItem="Z1u-ma-0uW" secondAttribute="centerX" id="GZv-4f-zec"/>
                 <constraint firstItem="1nC-Ye-5kO" firstAttribute="leading" secondItem="Mi8-gp-OxE" secondAttribute="trailing" id="Klq-nM-Qp1"/>
@@ -141,6 +140,7 @@
                 <constraint firstItem="Chk-hS-XbR" firstAttribute="centerY" secondItem="VRU-Ld-hbS" secondAttribute="centerY" id="wKe-ut-loT"/>
                 <constraint firstItem="Chk-hS-XbR" firstAttribute="centerY" secondItem="Z1u-ma-0uW" secondAttribute="centerY" id="xMJ-A1-FTq"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
                     <color key="value" white="0.0" alpha="0.97999999999999998" colorSpace="calibratedWhite"/>
