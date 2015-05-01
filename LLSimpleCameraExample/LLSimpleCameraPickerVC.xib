@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -50,7 +51,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRU-Ld-hbS" userLabel="Close">
-                    <rect key="frame" x="557" y="13" width="40" height="40"/>
+                    <rect key="frame" x="4" y="13" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="Hxm-0d-o2f"/>
                         <constraint firstAttribute="width" secondItem="VRU-Ld-hbS" secondAttribute="height" multiplier="1:1" id="kwB-xL-EFQ"/>
@@ -63,7 +64,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chk-hS-XbR" userLabel="Switch">
-                    <rect key="frame" x="3" y="13" width="40" height="40"/>
+                    <rect key="frame" x="552" y="13" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Chk-hS-XbR" secondAttribute="height" multiplier="1:1" id="6Vd-jb-DzF"/>
                         <constraint firstAttribute="width" constant="40" id="Pz3-ax-SEq"/>
@@ -89,31 +90,54 @@
                         <action selector="flashButtonPressed:" destination="-1" eventType="touchUpInside" id="Idt-uE-KOi"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngT-vJ-vVL" userLabel="Album">
-                    <rect key="frame" x="175" y="527" width="45" height="45"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mi8-gp-OxE" userLabel="AlbumSpacer">
+                    <rect key="frame" x="0.0" y="515" width="265" height="70"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngT-vJ-vVL" userLabel="Album">
+                            <rect key="frame" x="200" y="13" width="45" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="ngT-vJ-vVL" secondAttribute="height" multiplier="1:1" id="YwH-k1-a6Y"/>
+                                <constraint firstAttribute="width" constant="45" id="nnD-gX-SmS"/>
+                            </constraints>
+                            <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                            <state key="normal" image="camera-gallery">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="albumsButtonPressed:" destination="-1" eventType="touchUpInside" id="diN-IW-MmA"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="0.47000000000000003" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="ngT-vJ-vVL" secondAttribute="height" multiplier="1:1" id="YwH-k1-a6Y"/>
-                        <constraint firstAttribute="width" constant="45" id="nnD-gX-SmS"/>
+                        <constraint firstAttribute="centerY" secondItem="ngT-vJ-vVL" secondAttribute="centerY" id="N3G-gA-Ld7"/>
+                        <constraint firstAttribute="centerX" secondItem="ngT-vJ-vVL" secondAttribute="centerX" constant="-40" id="jka-8t-h31"/>
+                        <constraint firstAttribute="trailing" secondItem="ngT-vJ-vVL" secondAttribute="trailing" constant="20" id="kWy-sB-TXx"/>
                     </constraints>
-                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                    <state key="normal" image="camera-gallery">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="albumsButtonPressed:" destination="-1" eventType="touchUpInside" id="diN-IW-MmA"/>
-                    </connections>
-                </button>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                            <color key="value" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="jka-8t-h31"/>
+                        </mask>
+                    </variation>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.24796316030000001" green="0.64274388549999995" blue="0.89037287239999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="1nC-Ye-5kO" secondAttribute="bottom" constant="15" id="7H6-hX-a7c"/>
-                <constraint firstAttribute="trailingMargin" secondItem="VRU-Ld-hbS" secondAttribute="trailing" constant="-5" id="Cf6-i9-CVZ"/>
+                <constraint firstItem="VRU-Ld-hbS" firstAttribute="leading" secondItem="193-ik-d8M" secondAttribute="leading" constant="4" id="Cf6-i9-CVZ"/>
                 <constraint firstItem="Chk-hS-XbR" firstAttribute="top" secondItem="193-ik-d8M" secondAttribute="topMargin" constant="5" id="EtO-7W-10K"/>
-                <constraint firstItem="Chk-hS-XbR" firstAttribute="leading" secondItem="193-ik-d8M" secondAttribute="leadingMargin" constant="-5" id="FBt-Qd-s7w"/>
+                <constraint firstAttribute="trailing" secondItem="Chk-hS-XbR" secondAttribute="trailing" constant="8" id="FBt-Qd-s7w"/>
                 <constraint firstAttribute="centerX" secondItem="Z1u-ma-0uW" secondAttribute="centerX" id="GZv-4f-zec"/>
-                <constraint firstItem="ngT-vJ-vVL" firstAttribute="centerY" secondItem="1nC-Ye-5kO" secondAttribute="centerY" id="Xty-kF-xjo"/>
+                <constraint firstItem="1nC-Ye-5kO" firstAttribute="leading" secondItem="Mi8-gp-OxE" secondAttribute="trailing" id="Klq-nM-Qp1"/>
+                <constraint firstItem="Mi8-gp-OxE" firstAttribute="height" secondItem="1nC-Ye-5kO" secondAttribute="height" id="X4g-xF-WkQ"/>
+                <constraint firstItem="Mi8-gp-OxE" firstAttribute="centerY" secondItem="1nC-Ye-5kO" secondAttribute="centerY" id="alD-FV-hL6"/>
                 <constraint firstAttribute="centerX" secondItem="1nC-Ye-5kO" secondAttribute="centerX" id="m3I-OI-1Bt"/>
-                <constraint firstItem="1nC-Ye-5kO" firstAttribute="leading" secondItem="ngT-vJ-vVL" secondAttribute="trailing" constant="45" id="ugG-Rz-PXQ"/>
+                <constraint firstItem="Mi8-gp-OxE" firstAttribute="leading" secondItem="193-ik-d8M" secondAttribute="leading" id="v30-9U-KIf"/>
                 <constraint firstItem="Chk-hS-XbR" firstAttribute="centerY" secondItem="VRU-Ld-hbS" secondAttribute="centerY" id="wKe-ut-loT"/>
                 <constraint firstItem="Chk-hS-XbR" firstAttribute="centerY" secondItem="Z1u-ma-0uW" secondAttribute="centerY" id="xMJ-A1-FTq"/>
             </constraints>

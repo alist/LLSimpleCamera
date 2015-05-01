@@ -21,9 +21,21 @@
 @end
 
 @interface LLSimpleCameraPickerVC : UIViewController
+@property (strong, nonatomic) IBOutlet UIButton *snapButton;
+@property (strong, nonatomic) IBOutlet UIButton *switchButton;
+@property (strong, nonatomic) IBOutlet UIButton *closeButton;
+@property (strong, nonatomic) IBOutlet UIButton *albumsButton;
+@property (strong, nonatomic) IBOutlet UIButton *flashButton;
+
+- (IBAction)snapButtonPressed:(id)sender;
+- (IBAction)switchButtonPressed:(id)sender;
+- (IBAction)flashButtonPressed:(id)sender;
+- (IBAction)closeButtonPressed:(id)sender;
+- (IBAction)albumsButtonPressed:(id)sender;
+
 @property (strong, nonatomic) LLSimpleCamera *camera;
 
-@property (nonatomic, weak) id<LLSimpleCameraPickerVCDelegate> delegate;
+@property (nonatomic, weak) IBOutlet id<LLSimpleCameraPickerVCDelegate> delegate;
 
 @property (nonatomic, assign) BOOL showAlbumsButton;
 @property (nonatomic, assign) BOOL frontCameraYieldsMirrorImage;
